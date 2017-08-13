@@ -22,7 +22,7 @@ public class EventDirector {
 		if (listenerMap.containsKey(eventClass)){
 			List<EventListener<?>> listenerList = listenerMap.get(eventClass);
 			for (int i=0; i<listenerList.size(); i++){
-				EventListener<E> listener = (EventListener<E>) listenerList.get(0);
+				EventListener<E> listener = (EventListener<E>) listenerList.get(i);
 				listener.handle(event);
 			}
 		}
