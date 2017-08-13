@@ -43,6 +43,12 @@ public class MathFunctions {
 		return Math.sqrt(Math.pow(x1-x2,2) + Math.pow(y1-y2,2));
 	}
 	
+	/**
+	 * Returns true if a random number returns a greater percent than the input percent 
+	 */
+	public static boolean probability(float chance){
+		return generator.nextInt() > (chance*100);
+	}
 	
 
 }
