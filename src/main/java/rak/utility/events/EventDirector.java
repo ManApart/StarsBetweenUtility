@@ -16,6 +16,13 @@ public class EventDirector {
 		listenerMap.get(listenerClass).add(listener);
 	}
 	
+	public static <E extends Event> void unRegisterListener(EventListener<E> listener){
+		Class<E> listenerClass = getListendForClass(listener);
+		if (listenerMap.containsKey(listenerClass)){
+			listenerMap.get(listenerClass).remove(listener);
+		}
+	}
+	
 	@SuppressWarnings("unchecked")
 	public static <E extends Event> void postEvent(E event){
 		Class<E> eventClass = (Class<E>) event.getClass();

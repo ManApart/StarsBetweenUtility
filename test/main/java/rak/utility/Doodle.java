@@ -6,6 +6,11 @@ import java.util.ArrayList;
 public class Doodle {
 
 	public static void main(String[] args){
+//		logColors();
+		
+	}
+
+	public static void logColors() {
 		ArrayList<Color> colors = new ArrayList<>();
 		colors.add(new Color(0, 50, 150,1));
 		colors.add(new Color(0,100,200,1));
@@ -20,7 +25,5 @@ public class Doodle {
 		for (Color color : colors){
 			converter.logColorValues(color);
 		}
-		
-		
 	}
 }

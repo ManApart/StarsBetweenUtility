@@ -49,8 +49,15 @@ public class Grid<E extends GridItem> {
 		int x = square.getX() + xOffset;
 		int y = square.getY() + yOffset;
 		return getSquareAt(x, y);
-		
 	}
+	
+	public E getNeighbor(E item, GridDirection direction){
+		GridSquare<E> square = getSquareOf(item);
+		int x = square.getX() + direction.getOffsetX();
+		int y = square.getY() + direction.getOffsetY();
+		return getItemAt(x, y);
+	}
+	
 	public GridSquare<E> getSquareAt(int x, int y){
 		if (isValidLocation(x, y)){
 			return grid.get(x).get(y);
