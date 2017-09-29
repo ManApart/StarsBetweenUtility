@@ -1,7 +1,7 @@
 package rak.utility.grid;
 
-public interface GridItemBuilder {
+public interface GridItemBuilder<T extends GridItem> {
 	
-	public GridItem buildSquare();
+	public T buildSquare();
 
 }

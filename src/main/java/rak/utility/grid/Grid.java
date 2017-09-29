@@ -51,6 +51,7 @@ public class Grid<E extends GridItem> {
 		return getSquareAt(x, y);
 	}
 	
+	//TODO - looks like my x and y are inversed. Make this consistent
 	public E getNeighbor(E item, GridDirection direction){
 		GridSquare<E> square = getSquareOf(item);
 		int x = square.getX() + direction.getOffsetX();
