@@ -13,7 +13,7 @@ public class Grid<E extends GridItem> {
 		refreshMaps();
 	}
 
-	private void refreshMaps() {
+	public void refreshMaps() {
 		propulateItemToSquareMap();
 		createPaths();
 	}
