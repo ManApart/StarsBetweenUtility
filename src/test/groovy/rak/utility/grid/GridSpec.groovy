@@ -8,12 +8,12 @@ class GridSpec extends Specification{
 	
 	def "Get All Surrounding squares includes inner layers"(){
 		given:
-			Grid<String> grid = new Grid<String>(size);
+			Grid<GridItemImpl> grid = new Grid<>(size)
 			
-			GridSquare<String> origin = grid.getSquareAt(center,center)
+			GridSquare<GridItemImpl> origin = grid.getSquareAt(center,center)
 			
 		when:
-			ArrayList<GridSquare<String>> squares = grid.findAllSurroundingSquares(origin, area)
+			ArrayList<GridSquare<GridItemImpl>> squares = grid.findAllSurroundingSquares(origin, area)
 			
 		then:
 			squares.contains(origin)
@@ -28,12 +28,12 @@ class GridSpec extends Specification{
 	
 	def "Get Surrounding ring excludes inner layers"(){
 		given:
-			Grid<String> grid = new Grid<String>(size);
+			Grid<GridItemImpl> grid = new Grid<>(size)
 			
-			GridSquare<String> origin = grid.getSquareAt(center,center)
+			GridSquare<GridItemImpl> origin = grid.getSquareAt(center,center)
 			
 		when:
-			ArrayList<GridSquare<String>> squares = grid.findSurroundingRingOfSquares(origin, area)
+			ArrayList<GridSquare<GridItemImpl>> squares = grid.findSurroundingRingOfSquares(origin, area)
 			
 		then:
 			!squares.contains(origin)
@@ -48,17 +48,18 @@ class GridSpec extends Specification{
 	
 	def "Get all items returns same number of items as get all squares"(){
 		given:
-			Grid<String> grid = new Grid<String>(size);
+			Grid<GridItemImpl> grid = new Grid<>(size)
 			
 		when:
 			for (int x=0; x<size; x++){
 				for (int y=0; y<size; y++){
-					String item = "item " + x +", " + y
+
+                    GridItemImpl item = new GridItemImpl()
+                    item.string = "item " + x +", " + y
 					grid.setAt(item,x,y)
 				}
 			}
-			
-			
+
 		then:
 			int totalSize = size*size
 			grid.getSizeInOneDimension() == size
@@ -74,14 +75,15 @@ class GridSpec extends Specification{
 	
 	def "Get all items does not return null items"(){
 		given:
-			Grid<String> grid = new Grid<String>(size);
+			Grid<GridItemImpl> grid = new Grid<>(size)
 	
 		when:
 			for (int x=0; x<size; x++){
 				for (int y=0; y<size; y++){
 					//Don't add the first one
 					if (y != 0){
-						String item = "item " + x +", " + y
+                        GridItemImpl item = new GridItemImpl()
+                        item.string = "item " + x +", " + y
 						grid.setAt(item,x,y)
 					}
 				}

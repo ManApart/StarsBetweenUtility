@@ -11,7 +11,7 @@ public class GridPathBuilder<E extends GridItem> {
 	
 	
 	public GridPath<E> buildPath(GridSquare<E> source){
-		GridPath<E> path = new GridPath<E>(source);
+		GridPath<E> path = new GridPath<>(source);
 		
 		createDistanceMap(grid, path);
 		
